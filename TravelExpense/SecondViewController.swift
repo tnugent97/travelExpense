@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -16,6 +17,7 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var startCurrency: UITextField!
     @IBOutlet weak var userMessage: UILabel!
     @IBOutlet weak var startCurrencySymbol: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     var currencies: [String] = []
     var rates: [Double] = []
@@ -28,7 +30,13 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let triangle = triangleView(frame: CGRect(x: (self.view.frame.width / 2) - 20 , y: 270, width: 40, height: 30))
+        //set up ads
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        //draw arrow
+        let triangle = triangleView(frame: CGRect(x: (self.view.frame.width / 2) - 20 , y: (self.view.frame.height / 2), width: 40, height: 30))
         triangle.backgroundColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.0)
         view.addSubview(triangle)
         

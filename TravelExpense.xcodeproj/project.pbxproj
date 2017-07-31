@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1013F98A087F54B3B534D91F /* Pods_TravelExpense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EAC2AFE0AF29A547DC8355 /* Pods_TravelExpense.framework */; };
 		3153275D1F2E178F00435439 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153275C1F2E178F00435439 /* EZLoadingActivity.swift */; };
 		315327681F2E479500435439 /* exchange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 315327661F2E479500435439 /* exchange@2x.png */; };
 		315327691F2E479500435439 /* exchange@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 315327671F2E479500435439 /* exchange@3x.png */; };
 		3153276C1F2E48BB00435439 /* budget@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3153276A1F2E48BB00435439 /* budget@2x.png */; };
 		3153276D1F2E48BB00435439 /* budget@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3153276B1F2E48BB00435439 /* budget@3x.png */; };
+		31AA3ACF1F2FC4CB00908B13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31AA3ACE1F2FC4CB00908B13 /* GoogleService-Info.plist */; };
 		31DD852E1F2D269000C99B50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD852D1F2D269000C99B50 /* AppDelegate.swift */; };
 		31DD85301F2D269000C99B50 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD852F1F2D269000C99B50 /* FirstViewController.swift */; };
 		31DD85321F2D269000C99B50 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD85311F2D269000C99B50 /* SecondViewController.swift */; };
@@ -23,11 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05709CD0220DE66D26B843BF /* Pods-TravelExpense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelExpense.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelExpense/Pods-TravelExpense.release.xcconfig"; sourceTree = "<group>"; };
+		10A0DEDAF7F097A00051AE01 /* Pods-TravelExpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelExpense.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelExpense/Pods-TravelExpense.debug.xcconfig"; sourceTree = "<group>"; };
 		3153275C1F2E178F00435439 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
 		315327661F2E479500435439 /* exchange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange@2x.png"; sourceTree = "<group>"; };
 		315327671F2E479500435439 /* exchange@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange@3x.png"; sourceTree = "<group>"; };
 		3153276A1F2E48BB00435439 /* budget@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "budget@2x.png"; sourceTree = "<group>"; };
 		3153276B1F2E48BB00435439 /* budget@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "budget@3x.png"; sourceTree = "<group>"; };
+		31AA3ACE1F2FC4CB00908B13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31DD852A1F2D269000C99B50 /* TravelExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DD852D1F2D269000C99B50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31DD852F1F2D269000C99B50 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +43,7 @@
 		31DD853B1F2D269000C99B50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31F4D59A1F2F40560015EBFE /* gradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gradientView.swift; sourceTree = "<group>"; };
 		31F4D59E1F2F58EF0015EBFE /* triangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triangleView.swift; sourceTree = "<group>"; };
+		A1EAC2AFE0AF29A547DC8355 /* Pods_TravelExpense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelExpense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1013F98A087F54B3B534D91F /* Pods_TravelExpense.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,8 @@
 			children = (
 				31DD852C1F2D269000C99B50 /* TravelExpense */,
 				31DD852B1F2D269000C99B50 /* Products */,
+				C2DFCFAABC2B44580273B164 /* Pods */,
+				7488016642F4AA1B48CDF5F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,8 +93,26 @@
 				315327671F2E479500435439 /* exchange@3x.png */,
 				31DD85381F2D269000C99B50 /* LaunchScreen.storyboard */,
 				31DD853B1F2D269000C99B50 /* Info.plist */,
+				31AA3ACE1F2FC4CB00908B13 /* GoogleService-Info.plist */,
 			);
 			path = TravelExpense;
+			sourceTree = "<group>";
+		};
+		7488016642F4AA1B48CDF5F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1EAC2AFE0AF29A547DC8355 /* Pods_TravelExpense.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2DFCFAABC2B44580273B164 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				10A0DEDAF7F097A00051AE01 /* Pods-TravelExpense.debug.xcconfig */,
+				05709CD0220DE66D26B843BF /* Pods-TravelExpense.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,9 +122,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31DD853E1F2D269000C99B50 /* Build configuration list for PBXNativeTarget "TravelExpense" */;
 			buildPhases = (
+				D7D20A123097D0BFD2760B82 /* [CP] Check Pods Manifest.lock */,
 				31DD85261F2D269000C99B50 /* Sources */,
 				31DD85271F2D269000C99B50 /* Frameworks */,
 				31DD85281F2D269000C99B50 /* Resources */,
+				B9F865D871A254ECFEEF31C4 /* [CP] Embed Pods Frameworks */,
+				44418C5168739A79A6C8071F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DD853A1F2D269000C99B50 /* LaunchScreen.storyboard in Resources */,
+				31AA3ACF1F2FC4CB00908B13 /* GoogleService-Info.plist in Resources */,
 				315327691F2E479500435439 /* exchange@3x.png in Resources */,
 				3153276D1F2E48BB00435439 /* budget@3x.png in Resources */,
 				31DD85371F2D269000C99B50 /* Assets.xcassets in Resources */,
@@ -159,6 +190,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44418C5168739A79A6C8071F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelExpense/Pods-TravelExpense-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9F865D871A254ECFEEF31C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelExpense/Pods-TravelExpense-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7D20A123097D0BFD2760B82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		31DD85261F2D269000C99B50 /* Sources */ = {
@@ -293,6 +372,7 @@
 		};
 		31DD853F1F2D269000C99B50 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10A0DEDAF7F097A00051AE01 /* Pods-TravelExpense.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z7KCTYFSPR;
@@ -306,6 +386,7 @@
 		};
 		31DD85401F2D269000C99B50 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05709CD0220DE66D26B843BF /* Pods-TravelExpense.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z7KCTYFSPR;
