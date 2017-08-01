@@ -17,8 +17,13 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var startCurrency: UITextField!
     @IBOutlet weak var userMessage: UILabel!
     @IBOutlet weak var startCurrencySymbol: UILabel!
+    @IBOutlet weak var endCurrencySymbol: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var reverseButton: RoundButton!
+    
+    @IBAction func reverse(_ sender: Any) {
+    }
     
     var currencies: [String] = []
     var rates: [Double] = []
@@ -30,6 +35,9 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //fix button image
+        reverseButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         //load logo
         let image = #imageLiteral(resourceName: "yuppie")
@@ -195,18 +203,38 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         updateConversion()
     }
     
+    @IBAction func clearButtonPressed(_ sender: Any) {
+        amount.text = ""
+        updateConversion()
+    }
+    
+    @IBAction func reverseButtonPressed(_ sender: Any) {
+        let startCurrencyName = startCurrency.text!
+        
+        amount.text = finalAmount.text!
+        startCurrency.text = endCurrency.text!
+        endCurrency.text = startCurrencyName
+    
+        let activeEnd = activeEndCurrency
+        activeEndCurrency = activeStartCurrency
+        activeStartCurrency = activeEnd
+        
+        updateConversion()
+    }
+    
     func updateConversion(){
         let startSymbol = currencySymbol(code: startCurrency.text!)
         startCurrencySymbol.text = startSymbol
         let endSymbol = currencySymbol(code: endCurrency.text!)
+        endCurrencySymbol.text = endSymbol
         
         if amount.text != ""{
             let value = round(Double(amount.text!)! * (activeEndCurrency/activeStartCurrency) * 100) / 100
             
-            finalAmount.text = endSymbol + String(value)
+            finalAmount.text = String(value)
         }
         else{
-            finalAmount.text = endSymbol + "0.00"
+            finalAmount.text = "0.00"
         }
     }
     
