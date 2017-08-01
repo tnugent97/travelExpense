@@ -18,6 +18,7 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var userMessage: UILabel!
     @IBOutlet weak var startCurrencySymbol: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var currencies: [String] = []
     var rates: [Double] = []
@@ -29,6 +30,16 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //load logo
+        let image = #imageLiteral(resourceName: "yuppie")
+        let imageView = UIImageView(image: image)
+        let x = navBar.frame.size.width / 2 - image.size.width / 2
+        let y = navBar.frame.size.height / 2 - image.size.height / 2
+        
+        imageView.frame = CGRect(x: x, y: y, width: navBar.frame.size.width, height: navBar.frame.size.height - 5)
+        imageView.contentMode = .scaleAspectFit
+        navBar.topItem?.titleView = imageView
         
         //set up ads
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
