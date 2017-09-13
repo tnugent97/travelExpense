@@ -6,5 +6,6 @@ target 'TravelExpense' do
 
     pod 'Firebase/Core'
     pod 'Google-Mobile-Ads-SDK'
+    pod 'SDCAlertView', '~> 7.1'
 
 end

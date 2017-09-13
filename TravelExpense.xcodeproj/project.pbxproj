@@ -8,7 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1013F98A087F54B3B534D91F /* Pods_TravelExpense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EAC2AFE0AF29A547DC8355 /* Pods_TravelExpense.framework */; };
+		3146D4ED1F69B35B00CDC2FD /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3146D4EC1F69B35A00CDC2FD /* PageViewController.swift */; };
 		3153275D1F2E178F00435439 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153275C1F2E178F00435439 /* EZLoadingActivity.swift */; };
+		31970D821F460B3C00D224F9 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31970D801F460B3C00D224F9 /* customCell.swift */; };
+		31970D831F460B3C00D224F9 /* customCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31970D811F460B3C00D224F9 /* customCell.xib */; };
+		31970D8B1F51FC2100D224F9 /* CreateNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31970D8A1F51FC2100D224F9 /* CreateNew.swift */; };
+		31970D8E1F56F92C00D224F9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31970D8C1F56F92C00D224F9 /* Model.xcdatamodeld */; };
+		31970DB11F5719DA00D224F9 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31970DB01F5719DA00D224F9 /* Entry.swift */; };
+		31970DB41F571A2F00D224F9 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31970DB31F571A2F00D224F9 /* Page.swift */; };
 		31AA3ACF1F2FC4CB00908B13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31AA3ACE1F2FC4CB00908B13 /* GoogleService-Info.plist */; };
 		31DC2CCC1F30AC740026E90A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC2CCB1F30AC740026E90A /* RoundButton.swift */; };
 		31DD852E1F2D269000C99B50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD852D1F2D269000C99B50 /* AppDelegate.swift */; };
@@ -24,7 +31,14 @@
 /* Begin PBXFileReference section */
 		05709CD0220DE66D26B843BF /* Pods-TravelExpense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelExpense.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelExpense/Pods-TravelExpense.release.xcconfig"; sourceTree = "<group>"; };
 		10A0DEDAF7F097A00051AE01 /* Pods-TravelExpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelExpense.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelExpense/Pods-TravelExpense.debug.xcconfig"; sourceTree = "<group>"; };
+		3146D4EC1F69B35A00CDC2FD /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		3153275C1F2E178F00435439 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
+		31970D801F460B3C00D224F9 /* customCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
+		31970D811F460B3C00D224F9 /* customCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCell.xib; sourceTree = "<group>"; };
+		31970D8A1F51FC2100D224F9 /* CreateNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNew.swift; sourceTree = "<group>"; };
+		31970D8D1F56F92C00D224F9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		31970DB01F5719DA00D224F9 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		31970DB31F571A2F00D224F9 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		31AA3ACE1F2FC4CB00908B13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31DC2CCB1F30AC740026E90A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		31DD852A1F2D269000C99B50 /* TravelExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +66,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31970D841F460BBB00D224F9 /* customCell */ = {
+			isa = PBXGroup;
+			children = (
+				31970D801F460B3C00D224F9 /* customCell.swift */,
+				31970D811F460B3C00D224F9 /* customCell.xib */,
+			);
+			name = customCell;
+			sourceTree = "<group>";
+		};
+		31970D851F460BF600D224F9 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				3153275C1F2E178F00435439 /* EZLoadingActivity.swift */,
+				31F4D59E1F2F58EF0015EBFE /* triangleView.swift */,
+				31F4D59A1F2F40560015EBFE /* gradientView.swift */,
+				31DC2CCB1F30AC740026E90A /* RoundButton.swift */,
+			);
+			name = CustomClasses;
+			sourceTree = "<group>";
+		};
+		31970DB21F571A0900D224F9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				31DD852F1F2D269000C99B50 /* FirstViewController.swift */,
+				3146D4EC1F69B35A00CDC2FD /* PageViewController.swift */,
+				31DD85311F2D269000C99B50 /* SecondViewController.swift */,
+				31970D8A1F51FC2100D224F9 /* CreateNew.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		31970DB51F571A6F00D224F9 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				31970DB01F5719DA00D224F9 /* Entry.swift */,
+				31970DB31F571A2F00D224F9 /* Page.swift */,
+				31970D8C1F56F92C00D224F9 /* Model.xcdatamodeld */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
 		31DD85211F2D269000C99B50 = {
 			isa = PBXGroup;
 			children = (
@@ -73,14 +128,12 @@
 		31DD852C1F2D269000C99B50 /* TravelExpense */ = {
 			isa = PBXGroup;
 			children = (
+				31970DB21F571A0900D224F9 /* View Controllers */,
+				31970D841F460BBB00D224F9 /* customCell */,
+				31970D851F460BF600D224F9 /* CustomClasses */,
+				31970DB51F571A6F00D224F9 /* Data Model */,
 				31DD852D1F2D269000C99B50 /* AppDelegate.swift */,
-				31DD852F1F2D269000C99B50 /* FirstViewController.swift */,
-				31DD85311F2D269000C99B50 /* SecondViewController.swift */,
 				31DD85331F2D269000C99B50 /* Main.storyboard */,
-				31F4D59E1F2F58EF0015EBFE /* triangleView.swift */,
-				3153275C1F2E178F00435439 /* EZLoadingActivity.swift */,
-				31F4D59A1F2F40560015EBFE /* gradientView.swift */,
-				31DC2CCB1F30AC740026E90A /* RoundButton.swift */,
 				31DD85361F2D269000C99B50 /* Assets.xcassets */,
 				31DD85381F2D269000C99B50 /* LaunchScreen.storyboard */,
 				31DD853B1F2D269000C99B50 /* Info.plist */,
@@ -169,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31970D831F460B3C00D224F9 /* customCell.xib in Resources */,
 				31DD853A1F2D269000C99B50 /* LaunchScreen.storyboard in Resources */,
 				31AA3ACF1F2FC4CB00908B13 /* GoogleService-Info.plist in Resources */,
 				31DD85371F2D269000C99B50 /* Assets.xcassets in Resources */,
@@ -231,12 +285,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31970DB11F5719DA00D224F9 /* Entry.swift in Sources */,
 				3153275D1F2E178F00435439 /* EZLoadingActivity.swift in Sources */,
+				31970DB41F571A2F00D224F9 /* Page.swift in Sources */,
 				31DD85321F2D269000C99B50 /* SecondViewController.swift in Sources */,
 				31DC2CCC1F30AC740026E90A /* RoundButton.swift in Sources */,
 				31F4D59F1F2F58EF0015EBFE /* triangleView.swift in Sources */,
 				31F4D59B1F2F40560015EBFE /* gradientView.swift in Sources */,
 				31DD852E1F2D269000C99B50 /* AppDelegate.swift in Sources */,
+				31970D821F460B3C00D224F9 /* customCell.swift in Sources */,
+				31970D8B1F51FC2100D224F9 /* CreateNew.swift in Sources */,
+				3146D4ED1F69B35B00CDC2FD /* PageViewController.swift in Sources */,
+				31970D8E1F56F92C00D224F9 /* Model.xcdatamodeld in Sources */,
 				31DD85301F2D269000C99B50 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +468,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		31970D8C1F56F92C00D224F9 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				31970D8D1F56F92C00D224F9 /* Model.xcdatamodel */,
+			);
+			currentVersion = 31970D8D1F56F92C00D224F9 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 31DD85221F2D269000C99B50 /* Project object */;
 }

@@ -55,14 +55,13 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         bannerView.load(GADRequest())
         
         //draw arrow
-        let triangle = triangleView(frame: CGRect(x: (self.view.frame.width / 2) - 20 , y: (self.view.frame.height / 2), width: 40, height: 30))
+        let triangle = triangleView(frame: CGRect(x: (self.view.frame.width / 4) - 20 , y: (self.view.frame.height / 2), width: 40, height: 30))
         triangle.backgroundColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.0)
         view.addSubview(triangle)
         
         //Check if there was ever an update and deal with accordingly
         lastUpdate = defaults.object(forKey: "lastUpdate") as? Date
         
-        getLatest()
         if lastUpdate == nil {
             getLatest()
         }
@@ -73,6 +72,9 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             currencies = defaults.object(forKey: "currencies") as! [String]
             rates = defaults.object(forKey: "rates") as! [Double]
             activeEndCurrency = rates[0]
+            let formattedDate = DateFormatter()
+            formattedDate.dateFormat = "dd/MM/yy' at 'h:mm a zzzz."
+            userMessage.text = "Last Updated: " + formattedDate.string(from: lastUpdate!)
         }
         
         //set up picker views
