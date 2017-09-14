@@ -20,11 +20,13 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - PureLayout (3.0.2)
   - SDCAlertView (7.1.2)
 
 DEPENDENCIES:
   - Firebase/Core
   - Google-Mobile-Ads-SDK
+  - PureLayout
   - SDCAlertView (~> 7.1)
 
 SPEC CHECKSUMS:
@@ -35,8 +37,9 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 4a6f1b43c8cc0e1e95a3b59d9f52a01671c6f9f3
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SDCAlertView: c39fa91a3aeb5eeba58fe9cea648263b131ff2bf
 
-PODFILE CHECKSUM: d03e1885f5ede3c783f63f9659c90bf7a3ed2040
+PODFILE CHECKSUM: 26dd38ff0472f7ad0661b061dac9479ccdc3c1d0
 
 COCOAPODS: 1.2.1

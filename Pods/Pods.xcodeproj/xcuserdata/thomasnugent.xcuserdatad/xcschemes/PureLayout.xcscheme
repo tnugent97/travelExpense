@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '66B2E6CB205C97972A5EA0480DC84C31'
-               BlueprintName = 'SDCAlertView'
+               BlueprintIdentifier = '6D28C67EAA3E61804FF9F8B88BD082B5'
+               BlueprintName = 'PureLayout'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDCAlertView.framework'>
+               BuildableName = 'PureLayout.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

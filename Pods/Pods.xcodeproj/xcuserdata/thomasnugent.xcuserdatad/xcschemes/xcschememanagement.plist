@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PureLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDCAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>63BEEAF90F2C32BE1C28CA534C438D15</key>
+		<key>316DF18BAB19642EC7E16D0AF62167F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A0FD8DD4145860F63A37D00E1B3AA49F</key>
+		<key>66B2E6CB205C97972A5EA0480DC84C31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6D28C67EAA3E61804FF9F8B88BD082B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ConverterViewController.swift
 //  TravelExpense
 //
 //  Created by Thomas Nugent on 29/07/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ConverterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var finalAmount: UILabel!
@@ -40,12 +40,8 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         reverseButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         //load logo
-        let image = #imageLiteral(resourceName: "yuppie")
-        let imageView = UIImageView(image: image)
-        let x = navBar.frame.size.width / 2 - image.size.width / 2
-        let y = navBar.frame.size.height / 2 - image.size.height / 2
-        
-        imageView.frame = CGRect(x: x, y: y, width: navBar.frame.size.width, height: navBar.frame.size.height - 5)
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "yuppie"))
+        imageView.frame = CGRect(x: 0, y: 0, width: navBar.frame.size.width / 2, height: navBar.frame.size.height - 5)
         imageView.contentMode = .scaleAspectFit
         navBar.topItem?.titleView = imageView
         
@@ -92,7 +88,7 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SecondViewController.dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ConverterViewController.dismissKeyboard))
         let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
         toolbar.setItems([spacer, doneButton], animated: false)

@@ -1,17 +1,15 @@
 //
-//  FirstViewController.swift
+//  PageListViewController.swift
 //  TravelExpense
 //
-//  Created by Thomas Nugent on 29/07/2017.
+//  Created by Thomas Nugent on 13/09/2017.
 //  Copyright © 2017 Thomas Nugent. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-    
-    @IBOutlet weak var tableView: UITableView!
+class PageListViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsController: NSFetchedResultsController<Page>?
@@ -19,22 +17,20 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navBar image
-        let image = #imageLiteral(resourceName: "yuppie")
-        let imageView = UIImageView(image: image)
-        let x = (navigationController?.navigationBar.frame.size.width)! / 2 - image.size.width / 2
-        let y = (navigationController?.navigationBar.frame.size.height)! / 2 - image.size.height / 2
-        
-        imageView.frame = CGRect(x: x, y: y, width: (navigationController?.navigationBar.frame.size.width)!, height: (navigationController?.navigationBar.frame.size.height)! - 5)
+        //navBar set up
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "yuppie"))
+        imageView.frame = CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.size.width)! / 2, height: (navigationController?.navigationBar.frame.size.height)! - 5)
         imageView.contentMode = .scaleAspectFit
         navigationController?.navigationBar.topItem?.titleView = imageView
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newCategory))
+        navigationItem.leftBarButtonItem = self.editButtonItem
+        
         //table view set up
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90
+        tableView.backgroundView = Bundle.main.loadNibNamed("EmptyTableView", owner: self, options: nil)?.first as? EmptyTableView
         
         //fetched results controller set up
         let request: NSFetchRequest<Page> = Page.fetchRequest()
@@ -47,20 +43,31 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
-    //MARK: Table view delegate functions
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    //MARK: custom functions
+    func newCategory(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let alert = storyboard.instantiateViewController(withIdentifier: "createNew")
+        alert.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    //MARK: Table view functions
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
             if let obj = fetchedResultsController?.object(at: indexPath){
                 context.delete(obj)
@@ -73,20 +80,30 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController?.sections?.count ?? 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController?.sections, sections.count > 0 {
-            return sections[section].numberOfObjects
+            let num = sections[section].numberOfObjects
+            
+            if num == 0 {
+                tableView.separatorStyle = .none
+                tableView.backgroundView?.isHidden = false
+            }
+            else{
+                tableView.separatorStyle = .singleLine
+                tableView.backgroundView?.isHidden = true
+            }
+            return num
         }
         else{
             return 0
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! customCell
         
         if let obj = fetchedResultsController?.object(at: indexPath){
@@ -105,9 +122,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: prepare for segue and then do it
     }
+    
     
     // MARK: Fetched results controller delegate functions
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>){
@@ -139,15 +157,45 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>){
         tableView.endUpdates()
     }
-
-    //MARK: IBActions
-    @IBAction func newCategory(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let alert = storyboard.instantiateViewController(withIdentifier: "createNew")
-        alert.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.present(alert, animated: true, completion: nil)
-    }
-
+    
 }
+
+//MARK
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 

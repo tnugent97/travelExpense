@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PageViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class PageDetailViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsController: NSFetchedResultsController<Entry>?
