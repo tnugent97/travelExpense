@@ -8,7 +8,7 @@
 
 import UIKit
 
-class customCell: UITableViewCell {
+class customPageCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var localCurrency: UILabel!

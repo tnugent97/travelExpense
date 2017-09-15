@@ -27,7 +27,7 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
         navigationItem.leftBarButtonItem = self.editButtonItem
         
         //table view set up
-        tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        tableView.register(UINib(nibName: "customPageCell", bundle: nil), forCellReuseIdentifier: "customPageCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90
         tableView.backgroundView = Bundle.main.loadNibNamed("EmptyTableView", owner: self, options: nil)?.first as? EmptyTableView
@@ -43,12 +43,18 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
-        
+    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pageDetail" {
+            segue.destination.title = (sender as! String)
+        }
     }
     
     
@@ -69,14 +75,23 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
-            if let obj = fetchedResultsController?.object(at: indexPath){
-                context.delete(obj)
-                do {
-                    try context.save()
-                } catch {
-                    fatalError("Failure to save context: \(error)")
+            
+            //check the user really wants to delete
+            let alert = UIAlertController(title: "Are you sure?", message: "This cannot be undone!", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                if let obj = self.fetchedResultsController?.object(at: indexPath){
+                    self.context.delete(obj)
+                    do {
+                        try self.context.save()
+                    } catch {
+                        fatalError("Failure to save context: \(error)")
+                    }
                 }
-            }
+            }))
+            
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -88,6 +103,7 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
         if let sections = fetchedResultsController?.sections, sections.count > 0 {
             let num = sections[section].numberOfObjects
             
+            //show empty background view
             if num == 0 {
                 tableView.separatorStyle = .none
                 tableView.backgroundView?.isHidden = false
@@ -104,7 +120,7 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! customCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customPageCell", for: indexPath) as! customPageCell
         
         if let obj = fetchedResultsController?.object(at: indexPath){
             cell.title.text = obj.location
@@ -124,6 +140,8 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: prepare for segue and then do it
+        let cell = tableView.cellForRow(at: indexPath) as! customPageCell
+        performSegue(withIdentifier: "pageDetail", sender: cell.title.text)
     }
     
     
@@ -163,18 +181,6 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
 //MARK
 
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
@@ -186,16 +192,6 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 

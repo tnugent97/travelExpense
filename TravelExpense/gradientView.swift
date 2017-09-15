@@ -32,7 +32,7 @@ class gradientView: UIView {
     func updateView(){
         let layer = self.layer as! CAGradientLayer
         layer.colors = [ FirstColour.cgColor, SecondColour.cgColor ]
-        layer.locations = [ 0.2 ]
+        layer.locations = [ 0.6 ]
     }
 
 }
