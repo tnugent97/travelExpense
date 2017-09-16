@@ -1,5 +1,5 @@
 //
-//  CreateNew.swift
+//  CreateNewPage.swift
 //  
 //
 //  Created by Thomas Nugent on 26/08/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CreateNew: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CreateNewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var popup: UIView!
     @IBOutlet weak var name: UITextField!
@@ -35,7 +35,7 @@ class CreateNew: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(CreateNew.dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(CreateNewPage.dismissKeyboard))
         let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
         toolbar.setItems([spacer, doneButton], animated: false)
@@ -91,6 +91,7 @@ class CreateNew: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
             page.dateCreated = now
             page.dateEdited = now
             page.location = name.text
+            page.total = 0
             
             if activeCurrency == "Other"{
                 page.localCurrency = otherCurrency.text

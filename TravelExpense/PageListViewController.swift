@@ -30,7 +30,7 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
         tableView.register(UINib(nibName: "customPageCell", bundle: nil), forCellReuseIdentifier: "customPageCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90
-        tableView.backgroundView = Bundle.main.loadNibNamed("EmptyTableView", owner: self, options: nil)?.first as? EmptyTableView
+        tableView.backgroundView = Bundle.main.loadNibNamed("EmptyPageListView", owner: self, options: nil)?.first as? EmptyPageListView
         
         //fetched results controller set up
         let request: NSFetchRequest<Page> = Page.fetchRequest()
@@ -53,7 +53,8 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageDetail" {
-            segue.destination.title = (sender as! String)
+            segue.destination.title = (sender as! Page).location
+            (segue.destination as! PageDetailViewController).pageObject = (sender as! Page)
         }
     }
     
@@ -140,8 +141,12 @@ class PageListViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: prepare for segue and then do it
-        let cell = tableView.cellForRow(at: indexPath) as! customPageCell
-        performSegue(withIdentifier: "pageDetail", sender: cell.title.text)
+        if let obj = fetchedResultsController?.object(at: indexPath){
+            performSegue(withIdentifier: "pageDetail", sender: obj)
+        }
+        else{
+            print("error fetching object")
+        }
     }
     
     

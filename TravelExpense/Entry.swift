@@ -10,5 +10,13 @@ import UIKit
 import CoreData
 
 class Entry: NSManagedObject {
-
+    
+    override func prepareForDeletion() {
+        if expense == true {
+            page?.total += amount
+        }
+        else{
+            page?.total -= amount
+        }
+    }
 }

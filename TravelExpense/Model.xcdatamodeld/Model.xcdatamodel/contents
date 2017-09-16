@@ -14,10 +14,11 @@
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="localCurrency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" inverseName="page" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <elements>
         <element name="Entry" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="Page" positionX="151" positionY="-12" width="128" height="118"/>
+        <element name="Page" positionX="151" positionY="-12" width="128" height="133"/>
     </elements>
 </model>

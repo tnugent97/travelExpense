@@ -9,23 +9,33 @@
 import UIKit
 import CoreData
 
-class PageDetailViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class PageDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var total: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsController: NSFetchedResultsController<Entry>?
     
-    var pageTitle = ""
+    var pageObject : Page?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //navbar set up
-        navigationController?.navigationBar.topItem?.title = pageTitle
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newEntry))
+        
+        //tableView setup
+        tableView.register(UINib(nibName: "customPageDetailCell", bundle: nil), forCellReuseIdentifier: "customPageDetailCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 70
+        tableView.separatorStyle = .none
+        total.text = String(Double((pageObject?.total)!) / 100.0)
         
         //fetched results controller set up
         let request: NSFetchRequest<Entry> = Entry.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "dateOf", ascending: true)]
-        request.predicate = NSPredicate(format: "page.location = %@", pageTitle)
+        request.predicate = NSPredicate(format: "page.location = %@", self.title!)
         
         fetchedResultsController = NSFetchedResultsController<Entry>(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
@@ -43,12 +53,23 @@ class PageDetailViewController: UITableViewController, NSFetchedResultsControlle
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createNewEntry" {
+            (segue.destination as! CreateNewEntry).pageObject = (sender as! Page)
+        }
+    }
+    
+    //MARK: custom functions
+    func newEntry(){
+        performSegue(withIdentifier: "createNewEntry", sender: pageObject)
+    }
+    
     //MARK: Table view functions
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
             
             //check the user really wants to delete
@@ -70,11 +91,11 @@ class PageDetailViewController: UITableViewController, NSFetchedResultsControlle
         }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController?.sections?.count ?? 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController?.sections, sections.count > 0 {
             let num = sections[section].numberOfObjects
             
@@ -94,7 +115,7 @@ class PageDetailViewController: UITableViewController, NSFetchedResultsControlle
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customPageDetailCell", for: indexPath) as! customPageDetailCell
         
         if let obj = fetchedResultsController?.object(at: indexPath){
@@ -102,7 +123,7 @@ class PageDetailViewController: UITableViewController, NSFetchedResultsControlle
             cell.category.text = obj.category
             cell.desc.text = obj.desc
             
-            let amount = obj.amount
+            let amount = Float(obj.amount) / 100
             if obj.expense == true {
                 cell.amount.text = "-" + String(amount)
                 cell.amount.textColor = UIColor.red
@@ -111,6 +132,7 @@ class PageDetailViewController: UITableViewController, NSFetchedResultsControlle
                 cell.amount.text = String(amount)
                 cell.amount.textColor = UIColor.green
             }
+            cell.amount.adjustsFontSizeToFitWidth = true
             
             let formattedDate = DateFormatter()
             formattedDate.dateFormat = "dd/MM/yy"
@@ -122,15 +144,9 @@ class PageDetailViewController: UITableViewController, NSFetchedResultsControlle
         return cell
     }
     
-   /* override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: prepare for segue and then do it
-        let cell = tableView.cellForRow(at: indexPath) as! customPageCell
-        performSegue(withIdentifier: "pageDetail", sender: cell.title.text)
-    }*/
-    
-    
     // MARK: Fetched results controller delegate functions
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>){
+        total.text = String(Double((pageObject?.total)!) / 100.0)
         tableView.beginUpdates()
     }
     
@@ -159,6 +175,5 @@ class PageDetailViewController: UITableViewController, NSFetchedResultsControlle
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>){
         tableView.endUpdates()
     }
-
 
 }

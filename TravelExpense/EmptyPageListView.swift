@@ -8,10 +8,10 @@
 
 import UIKit
 
-class EmptyTableView: UIView {
+class EmptyPageListView: UIView {
 
     func instanceFromNib() -> UIView {
-        return UINib(nibName: "EmptyTableView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+        return UINib(nibName: "EmptyPageListView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
 
 }
