@@ -77,6 +77,7 @@ class HomeCurrencyController: UITableViewController {
             homeCurrencyChoice = indexPath.row
             defaults.set(homeCurrencyChoice, forKey: "homeCurrency")
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func toggleCheckMark(currency: Int){
@@ -297,7 +298,11 @@ class HomeCurrencyController: UITableViewController {
             break
         }
         let count = (navigationController?.viewControllers.count)! - 1
-        (navigationController?.viewControllers[count] as! settingsViewController).homeCurrencyChoice.text = label
+        
+        let vc = (navigationController?.viewControllers[count] as? settingsViewController)
+        if vc != nil{
+            vc!.homeCurrencyChoice.text = label
+        }
     }
 
 }

@@ -30,7 +30,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACk-Ez-a75">
-                            <rect key="frame" x="140.66666666666669" y="206" width="132.66666666666669" height="36"/>
+                            <rect key="frame" x="140.66666666666669" y="206" width="133.00000000000006" height="36"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                             <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

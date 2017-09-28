@@ -12,11 +12,13 @@ import CoreData
 class Entry: NSManagedObject {
     
     override func prepareForDeletion() {
-        if expense == true {
+        if category?.expense == true {
             page?.total += amount
         }
         else{
             page?.total -= amount
         }
+        
+        page?.dateEdited = Date() as NSDate
     }
 }

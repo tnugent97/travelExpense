@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="category">
+        <attribute name="expense" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="entry" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="category" inverseEntity="Entry" syncable="YES"/>
+    </entity>
     <entity name="Entry" representedClassName=".Entry" syncable="YES" codeGenerationType="category">
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateOf" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="expense" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="subLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="entry" inverseEntity="Category" syncable="YES"/>
         <relationship name="page" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Page" inverseName="entries" inverseEntity="Page" syncable="YES"/>
     </entity>
     <entity name="Page" representedClassName=".Page" syncable="YES" codeGenerationType="category">
@@ -18,7 +22,8 @@
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" inverseName="page" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Entry" positionX="-63" positionY="-18" width="128" height="133"/>
         <element name="Page" positionX="151" positionY="-12" width="128" height="133"/>
+        <element name="Category" positionX="-56" positionY="200" width="128" height="88"/>
     </elements>
 </model>

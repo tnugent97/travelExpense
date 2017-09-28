@@ -85,7 +85,17 @@ class CreateNewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     @IBAction func OK(_ sender: Any) {
-        if name.text != ""{
+        if name.text == ""{
+            name.layer.borderColor = UIColor.red.cgColor
+            name.layer.borderWidth = 1
+            name.layer.cornerRadius = 5
+        }
+        else if otherCurrency.isEnabled && otherCurrency.text == "" {
+            otherCurrency.layer.borderColor = UIColor.red.cgColor
+            otherCurrency.layer.borderWidth = 1
+            otherCurrency.layer.cornerRadius = 5
+        }
+        else{
             let page = NSEntityDescription.insertNewObject(forEntityName: "Page", into: context) as! Page
             let now = Date() as NSDate
             page.dateCreated = now
@@ -108,11 +118,6 @@ class CreateNewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             }
             print("new object created")
             self.dismiss(animated: true, completion: nil)
-        }
-        else{
-            name.layer.borderColor = UIColor.red.cgColor
-            name.layer.borderWidth = 1
-            name.layer.cornerRadius = 5
         }
     }
 }
