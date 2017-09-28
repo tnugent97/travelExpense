@@ -31,6 +31,7 @@ class PageDetailViewController: UIViewController, UITableViewDataSource, UITable
         tableView.estimatedRowHeight = 70
         tableView.separatorStyle = .none
         total.text = String(Double((pageObject?.total)!) / 100.0)
+        tableView.backgroundView = Bundle.main.loadNibNamed("EmptyPageDetailView", owner: self, options: nil)?.first as? EmptyPageDetailView
         
         //fetched results controller set up
         let request: NSFetchRequest<Entry> = Entry.fetchRequest()

@@ -1814,7 +1814,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKg-mk-Bmk" userLabel="expense">
-                                        <rect key="frame" x="42.5" y="127" width="185" height="31"/>
+                                        <rect key="frame" x="42.5" y="123" width="185" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH3-l9-6oa">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="31"/>
@@ -1845,7 +1845,7 @@
                                     <constraint firstItem="CuC-KI-C4c" firstAttribute="top" secondItem="eSQ-HE-ZlZ" secondAttribute="bottom" constant="16" id="myb-PM-UPI"/>
                                     <constraint firstItem="eSQ-HE-ZlZ" firstAttribute="centerX" secondItem="HtW-xS-b4O" secondAttribute="centerX" id="nFj-xK-QZh"/>
                                     <constraint firstAttribute="bottom" secondItem="vPr-a2-BaC" secondAttribute="bottom" constant="-1" id="nZW-Oy-dun"/>
-                                    <constraint firstItem="YKg-mk-Bmk" firstAttribute="top" secondItem="CuC-KI-C4c" secondAttribute="bottom" constant="12" id="tXy-WP-Dbc"/>
+                                    <constraint firstItem="YKg-mk-Bmk" firstAttribute="top" secondItem="CuC-KI-C4c" secondAttribute="bottom" constant="8" id="tXy-WP-Dbc"/>
                                     <constraint firstAttribute="width" constant="270" id="xBr-CY-YG7"/>
                                 </constraints>
                             </view>

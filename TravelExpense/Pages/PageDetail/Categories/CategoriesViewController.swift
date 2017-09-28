@@ -24,6 +24,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
         tableView.dequeueReusableCell(withIdentifier: "categoryCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
+        tableView.backgroundView = Bundle.main.loadNibNamed("EmptyCategoryView", owner: self, options: nil)?.first as? EmptyCategoryView
         
         //fetched results controller set up
         let request: NSFetchRequest<Category> = Category.fetchRequest()
