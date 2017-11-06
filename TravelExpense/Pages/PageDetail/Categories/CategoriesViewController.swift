@@ -13,6 +13,7 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsController: NSFetchedResultsController<Category>?
+    var categorySelect = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,9 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
         //tableView setup
         tableView.dequeueReusableCell(withIdentifier: "categoryCell")
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 50
         tableView.backgroundView = Bundle.main.loadNibNamed("EmptyCategoryView", owner: self, options: nil)?.first as? EmptyCategoryView
+        tableView.allowsSelection = categorySelect
         
         //fetched results controller set up
         let request: NSFetchRequest<Category> = Category.fetchRequest()
@@ -55,6 +57,18 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
     }
 
     //MARK: Table view functions
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if categorySelect {
+            if let obj = fetchedResultsController?.object(at: indexPath){            
+                let vc = navigationController?.viewControllers[(navigationController?.viewControllers.count)! - 2] as? CreateNewEntry
+                vc?.catObject = obj
+                vc?.category.setTitle("  " + obj.name!, for: .normal)
+                vc?.category.setTitleColor(UIColor(red:0.13, green:0.15, blue:0.26, alpha:1.0), for: .normal)
+                navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -149,15 +163,5 @@ class CategoriesViewController: UITableViewController, NSFetchedResultsControlle
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>){
         tableView.endUpdates()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
