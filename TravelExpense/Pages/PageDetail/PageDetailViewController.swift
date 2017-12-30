@@ -126,7 +126,7 @@ class PageDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         if let obj = fetchedResultsController?.object(at: indexPath){
             cell.location.text = obj.subLocation
-            //cell.category.text = obj.category
+            cell.category.text = obj.category?.name
             cell.desc.text = obj.desc
             
             let amount = Float(obj.amount) / 100
@@ -137,11 +137,11 @@ class PageDetailViewController: UIViewController, UITableViewDataSource, UITable
             
             if obj.category?.expense == true {
                 cell.amount.text = "-" + finalAmount!
-                cell.amount.textColor = UIColor.red
+                cell.amount.textColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.0)
             }
             else{
                 cell.amount.text = finalAmount!
-                cell.amount.textColor = UIColor.green
+                cell.amount.textColor = UIColor(red:0.18, green:0.80, blue:0.44, alpha:1.0)
             }
             cell.amount.adjustsFontSizeToFitWidth = true
             

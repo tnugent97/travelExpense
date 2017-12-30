@@ -50,6 +50,7 @@ class CreateNewCategory: UIViewController {
             let category = NSEntityDescription.insertNewObject(forEntityName: "Category", into: context) as! Category
             
             category.name = name.text!
+            category.expense = expense.isOn
             
             do {
                 try context.save()
